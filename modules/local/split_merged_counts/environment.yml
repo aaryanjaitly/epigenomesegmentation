@@ -1,0 +1,6 @@
+name: split_merged_counts
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - conda-forge::gawk=5.3.0

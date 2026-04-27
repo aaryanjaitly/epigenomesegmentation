@@ -1,0 +1,7 @@
+name: generate_methylation_bins
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - bioconda::bedtools=2.31.1
+  - conda-forge::gawk=5.3.0

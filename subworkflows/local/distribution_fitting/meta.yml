@@ -1,0 +1,29 @@
+name: distribution_fitting
+description: Tests statistical distributions for histone marks.
+keywords:
+  - fitting
+  - distribution
+  - statistical_modeling
+  - histone_marks
+components:
+  - episegmix/distfit/histone/train
+  - episegmix/distfit/histone/assess
+input:
+  - ch_input_raw:
+      type: channel
+      description: Channel containing metadata and raw count data for histone marks
+  - val_dists:
+      type: list
+      description: List of statistical distributions (e.g., Poisson, Negative Binomial) to evaluate
+  - original_samplesheet:
+      type: file
+      description: The original input samplesheet file to be updated with optimal parameters
+output:
+  - split_counts:
+      type: channel
+      description: Channel containing methylation data partitioned into genomic bins
+  - versions:
+      type: file
+      description: File containing software versions for data binning tools
+authors:
+  - "@aaryanjaitly"

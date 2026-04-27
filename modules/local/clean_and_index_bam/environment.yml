@@ -1,0 +1,6 @@
+name: clean_and_index_bam
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - bioconda::samtools=1.23

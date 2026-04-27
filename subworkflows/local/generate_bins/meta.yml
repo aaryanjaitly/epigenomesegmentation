@@ -1,0 +1,25 @@
+name: generate_bins
+description: Partitions methylation count data into genomic windows for DNA-only mode analysis.
+keywords:
+  - genomic_bins
+  - dna_methylation
+  - data_partitioning
+  - preprocessing
+components:
+  - generate/methylation/bins
+input:
+  - ch_meth_counts:
+      type: channel
+      description: Channel containing processed methylation count matrices
+  - ch_bins:
+      type: file
+      description: BED file defining the genomic windows for data binning
+output:
+  - split_counts:
+      type: channel
+      description: Channel containing the binned methylation data ready for the HMM
+  - versions:
+      type: file
+      description: File containing software versions for the binning tools
+authors:
+  - "@aaryanjaitly"

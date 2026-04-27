@@ -21,48 +21,83 @@
 
 ## Introduction
 
-**nf-core/epigenomesegmentation** is a bioinformatics pipeline that ...
+**nf-core/epigenomesegmentation** is a bioinformatics pipeline for chromatin segmentation. It uses a hidden Markov model (HMM) to annotate genomic regions with functional states (e.g., enhancers, promoters) based on combinations of epigenetic modifications, capturing spatial relations via transition probabilities.
 
-<!-- TODO nf-core:
-   Complete this sentence with a 2-3 sentence summary of what types of data the pipeline ingests, a brief overview of the
-   major pipeline sections and the types of output it produces. You're giving an overview to someone new
-   to nf-core here, in 15-20 seconds. For an example, see https://github.com/nf-core/rnaseq/blob/master/README.md#introduction
--->
+![nf-core/epigenomesegmentation metro map](docs/images/nf-core-epigenomesegmentation_dark.svg)
 
-<!-- TODO nf-core: Include a figure that guides the user through the major workflow steps. Many nf-core
-     workflows use the "tube map" design for that. See https://nf-co.re/docs/guidelines/graphic_design/workflow_diagrams#examples for examples.   -->
-<!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->
+## Default Workflow: Standard Mode
+
+By default, the EPIGENOMESEGMENTATION pipeline executes the **Standard Mode** (`--standard true` or remains unspecified, and `--merge false`). This primary pathway processes histone data (BAM files) to generate segmentation models, bypassing methylation processing.
+
+### Execution Steps
+
+1. **Genome Preparation** (`PREPARE_GENOME` & `GENERATE_BINS`): Fetches chromosome size files and generates the required genomic bins.
+2. **Processing Branching (Histone & Methylation)**: Parses the input samplesheet and evaluates the `--merge` flag:
+    * **Histone Processing** (`PROCESS_HISTONES`): Maps BAM files against genomic bins to extract count matrices. 
+    * **Methylation Processing** (`PROCESS_METHYL`): Triggered if `--merge true`. Processes BED files at base-pair resolution with merged +/- strands to maintain signal fidelity.
+3. **Count Merging & Synchronization** (`MERGE_DATA`): If `--merge` is enabled, the pipeline intersects the processed matrices. This synchronizes the Histone (binned) and Methylation (base-pair) data into a consistent windowed format to ensure all multi-omic layers are aligned to the same coordinate system.
+4. **Segmentation Modeling**: Based on the selected parameters (`--standard`, `--duration`, or `--dna`), the data is routed through a specific modeling subworkflow:
+    * **Standard** (`MODEL_TRAINING_STD`): Default HMM-based segmentation.
+    * **Duration-Aware** (`MODEL_TRAINING_DM`): Incorporates state duration modeling.
+    * **DNA-Centric** (`MODEL_TRAINING_DNA`): Optimized for DNA-specific features.
+    * *Note: Each subworkflow executes four consecutive modules: `prepare`, `train`, `decode`, and `report`.*
+5. **Distribution Fitting & Automated Selection** (`DISTRIBUTION_FITTING`): If the `fitting` mode is triggered, the pipeline identifies the optimal statistical distribution for the data using:
+    * `distfit_histone_train`: Trains models across statistical distributions.
+    * `distfit_histone_assess`: Evaluates and selects the distribution with the best fit.
+    * **Automated Step**: If the `--best_fit_segmentation` flag is present, the pipeline automatically executes the segmentation workflow (Step 4). By default, this runs in `standard` mode unless `--duration` is explicitly specified.
+
+---
+
+### **Subworkflow Reference**
+The pipeline logic is organized into the following modular components:
+
+| Category | Subworkflows |
+| :--- | :--- |
+| **Setup** | `PREPARE_GENOME`, `GENERATE_BINS` |
+| **Data Processing** | `PROCESS_HISTONES`, `PROCESS_METHYL`, `MERGE_DATA` |
+| **Modeling Modes** | `MODEL_TRAINING_STD`, `MODEL_TRAINING_DM`, `MODEL_TRAINING_DNA` |
+| **Optimization** | `DISTRIBUTION_FITTING` |
+
+---
+
+> **Note:** You can set the execution mode using the primary `--episegmix_mode` flag (e.g., `standard`, `duration`, `dna`, or `fitting`) or by using direct shortcut flags: `--standard`, `--duration`, `--dna`, or `--fitting`.
 
 ## Usage
 
 > [!NOTE]
 > If you are new to Nextflow and nf-core, please refer to [this page](https://nf-co.re/docs/usage/installation) on how to set-up Nextflow. Make sure to [test your setup](https://nf-co.re/docs/usage/introduction#how-to-run-a-pipeline) with `-profile test` before running the workflow on actual data.
 
-<!-- TODO nf-core: Describe the minimum required steps to execute the pipeline, e.g. how to prepare samplesheets.
-     Explain what rows and columns represent. For instance (please edit as appropriate):
-
 First, prepare a samplesheet with your input data that looks as follows:
 
-`samplesheet.csv`:
+***samplesheet.csv***:
 
 ```csv
-sample,fastq_1,fastq_2
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
+sample_id,replicate,epigenetic_mark,file_name,modality,paired_end,distribution
+Kidney,1,H3K27ac,../data/kidney/histone/kidney_H3K27ac.bam,ChIP-seq,true,NBI
+Kidney,2,WGBS,../data/kidney/wgbs/kidney_WGBS.bed,WGBS,true,BI
 ```
 
-Each row represents a fastq file (single-end) or a pair of fastq files (paired end).
+Each row represents a specific assay file associated with a sample. The pipeline automatically distinguishes between histone data and methylation data based on the file extension.
 
--->
+### Column Specifications
+
+* **`sample_id`**: A unique identifier for your sample (e.g., `Kidney`). Files sharing the same `sample_id` will be grouped and processed together.
+* **`replicate`**: The replicate number for the sample (e.g., `1`).
+* **`epigenetic_mark`**: The specific target or assay type (e.g., `H3K27ac` for histones, `WGBS` for methylation).
+* **`file_name`**: The file path. Histone data must be `.bam` or `.bam.gz`. Methylation data must be `.bed` or `.bed.gz`.
+* **`modality`**: The type of experiment performed (e.g., `ChIP-seq`, `WGBS`).
+* **`paired_end`**: A boolean value (`true` or `false`) indicating if the sequencing data is paired-end.
+* **`distribution`**: The statistical distribution to apply during model training for this mark (e.g., `NBI` for Negative Binomial, `BI` for Binomial). Leave empty to use global defaults.
 
 Now, you can run the pipeline using:
 
-<!-- TODO nf-core: update the following command to include all required parameters for a minimal example -->
-
 ```bash
 nextflow run nf-core/epigenomesegmentation \
-   -profile <docker/singularity/.../institute> \
    --input samplesheet.csv \
-   --outdir <OUTDIR>
+   --outdir <OUTDIR> \
+   --episegmix_mode standard \
+   --genome hg38 \
+   -profile <docker/singularity/.../institute> 
 ```
 
 > [!WARNING]
@@ -80,9 +115,14 @@ For more details about the output files and reports, please refer to the
 
 nf-core/epigenomesegmentation was originally written by Aaryan Jaitly.
 
-We thank the following people for their extensive assistance in the development of this pipeline:
+The original framework EpiSegMix that was used in ESM (https://doi.org/10.1093/bioinformatics/btae178) and ESMM (https://doi.org/10.1101/2025.07.25.666820) was written by Johanna Elena Schmitz and [Nihit Aggarwal](mailto:nihit.aggarwal@uni-saarland.de) (Saarland University).
 
-<!-- TODO nf-core: If applicable, make list of people who have also contributed -->
+The EpiSegMix tool was developed and designed by:
+- [Nihit Aggarwal](mailto:nihit.aggarwal@uni-saarland.de)
+- Johanna Elena Schmitz
+- Dr. AbdulRahman Salhab
+- Prof. Dr. Jörn Walter
+- Prof. Dr. Sven Rahmann
 
 ## Contributions and Support
 
@@ -91,11 +131,6 @@ If you would like to contribute to this pipeline, please see the [contributing g
 For further information or help, don't hesitate to get in touch on the [Slack `#epigenomesegmentation` channel](https://nfcore.slack.com/channels/epigenomesegmentation) (you can join with [this invite](https://nf-co.re/join/slack)).
 
 ## Citations
-
-<!-- TODO nf-core: Add citation for pipeline after first release. Uncomment lines below and update Zenodo doi and badge at the top of this file. -->
-<!-- If you use nf-core/epigenomesegmentation for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
-
-<!-- TODO nf-core: Add bibliography of tools and data used in your pipeline -->
 
 An extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.
 

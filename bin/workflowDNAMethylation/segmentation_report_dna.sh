@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+while getopts "n:o:i:" OPTION; do
+    case $OPTION in
+        n) name="$OPTARG" ;;
+        o) output_dir=$OPTARG ;;
+        i) plot_statistics=$OPTARG ;;
+    esac
+done
+
+output_file="${output_dir}/${name}.html"
+STYLE="<style>body{font-family:sans-serif;background:#f4f7f6;padding:20px}.container{max-width:1000px;margin:0 auto;background:white;padding:30px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}h1,h2{text-align:center;color:#2c3e50}.section{margin-bottom:30px;text-align:center}.grid{display:flex;flex-wrap:wrap;justify-content:center;gap:15px}.card{flex:1;min-width:280px;background:#fafafa;padding:10px;border:1px solid #eee;border-radius:4px}.label{font-weight:bold;display:block;margin-bottom:5px;color:#666}img{max-width:100%;height:auto;border-radius:4px}</style>"
+
+cat << EOF > "$output_file"
+<!DOCTYPE html><html><head><title>DNA Report - $name</title>$STYLE</head>
+<body><div class="container"><h1>EpiSegMix Report: $name</h1>
+<div class="section"><h2>Segmentation</h2><span class="label">State Colors</span><img src="${name}-stateColors.png"></div>
+<div class="section"><h2>Average Methylation</h2><img src="${name}-averageMethylation.png"></div>
+<div class="section"><h2>Characteristics</h2><div class="grid">
+<div class="card"><span class="label">Transition Matrix</span><img src="${name}-transitionMatrix.png"></div>
+<div class="card"><span class="label">Average Length</span><img src="${name}-stateLength.png"></div>
+<div class="card"><span class="label">Coverage</span><img src="${name}-stateMembership.png"></div>
+</div></div></div></body></html>
+EOF

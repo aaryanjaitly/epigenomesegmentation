@@ -2,32 +2,108 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "https://raw.githubusercontent.com/nf-core/epigenomesegmentation/master/assets/schema_input.json",
     "title": "nf-core/epigenomesegmentation pipeline - params.input schema",
-    "description": "Schema for the file provided with params.input",
+    "description": "Schema for the samplesheet.csv file provided with params.input",
     "type": "array",
     "items": {
         "type": "object",
         "properties": {
-            "sample": {
+            "sample_id": {
                 "type": "string",
-                "pattern": "^\\S+$",
-                "errorMessage": "Sample name must be provided and cannot contain spaces",
+                "pattern": "^[a-zA-Z0-9_\\-\\.]+$",
+                "description": "Unique identifier for the sample. No spaces allowed.",
+                "errorMessage": "sample_id must be a string containing only alphanumeric characters, underscores, dashes, or dots (no spaces)",
                 "meta": ["id"]
             },
-            "fastq_1": {
-                "type": "string",
-                "format": "file-path",
-                "exists": true,
-                "pattern": "^([\\S\\s]*\\/)?[^\\s\\/]+\\.f(ast)?q\\.gz$",
-                "errorMessage": "FastQ file for reads 1 must be provided, cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'"
+            "replicate": {
+                "type": "integer",
+                "minimum": 1,
+                "default": 1,
+                "description": "Replicate number for the sample",
+                "errorMessage": "replicate must be a positive integer",
+                "meta": ["replicate"]
             },
-            "fastq_2": {
+            "epigenetic_mark": {
+                "type": "string",
+                "pattern": "^[a-zA-Z0-9_\\-\\.]+$",
+                "description": "The specific histone mark or methylation type (e.g. H3K27ac, WGBS)",
+                "errorMessage": "epigenetic_mark must be a string without spaces",
+                "meta": ["epigenetic_mark"]
+            },
+            "file_name": {
                 "type": "string",
                 "format": "file-path",
                 "exists": true,
-                "pattern": "^([\\S\\s]*\\/)?[^\\s\\/]+\\.f(ast)?q\\.gz$",
-                "errorMessage": "FastQ file for reads 2 cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'"
+                "description": "Absolute path to the input data file (BAM or BED)",
+                "errorMessage": "file_name must be a valid path to an existing file"
+            },
+            "modality": {
+                "type": "string",
+                "enum": ["ChIP-seq", "WGBS", "ATAC-seq", "NOMe-seq", "chip", "wgbs", "atac", "nome"],
+                "description": "The sequencing experiment type",
+                "errorMessage": "modality must be one of: ChIP-seq, WGBS, ATAC-seq, NOMe-seq",
+                "meta": ["modality"]
+            },
+            "paired_end": {
+                "type": "boolean",
+                "default": true,
+                "description": "Set to true for paired-end sequencing data",
+                "errorMessage": "paired_end must be true or false",
+                "meta": ["paired_end"]
+            },
+            "distribution": {
+                "type": "string",
+                "pattern": "^[a-zA-Z0-9_\\-\\.]*$",
+                "description": "Statistical distribution model to use for this specific mark (e.g., NBI, P, ZINB). Leave empty to use global defaults.",
+                "errorMessage": "distribution must be a string without spaces",
+                "meta": ["distribution"]
             }
         },
-        "required": ["sample", "fastq_1"]
+        "required": ["sample_id", "replicate", "epigenetic_mark", "file_name", "modality", "paired_end"],
+        "allOf": [
+            {
+                "if": { "properties": { "modality": { "const": "ChIP-seq" } } },
+                "then": {
+                    "properties": {
+                        "file_name": {
+                            "pattern": "^\\S+\\.bam$",
+                            "errorMessage": "ChIP-seq files must end with .bam"
+                        }
+                    }
+                }
+            },
+            {
+                "if": { "properties": { "modality": { "const": "ATAC-seq" } } },
+                "then": {
+                    "properties": {
+                        "file_name": {
+                            "pattern": "^\\S+\\.bam$",
+                            "errorMessage": "ATAC-seq files must end with .bam"
+                        }
+                    }
+                }
+            },
+            {
+                "if": { "properties": { "modality": { "const": "WGBS" } } },
+                "then": {
+                    "properties": {
+                        "file_name": {
+                            "pattern": "^\\S+\\.(bed|bed\\.gz)$",
+                            "errorMessage": "WGBS files must end with .bed or .bed.gz"
+                        }
+                    }
+                }
+            },
+            {
+                "if": { "properties": { "modality": { "const": "NOMe-seq" } } },
+                "then": {
+                    "properties": {
+                        "file_name": {
+                            "pattern": "^\\S+\\.(bed|bed\\.gz)$",
+                            "errorMessage": "NOMe-seq files must end with .bed or .bed.gz"
+                        }
+                    }
+                }
+            }
+        ]
     }
 }

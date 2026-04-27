@@ -1,0 +1,16 @@
+name: generate_count_matrix_bam 
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - r-base
+  - bioconductor-genomicranges
+  - bioconductor-biocparallel
+  - bioconductor-rsamtools
+  - bioconductor-preprocesscore
+  - bioconductor-bamsignals
+  - bedtools
+  - samtools
+  - r-matrixstats
+  - r-rcpp

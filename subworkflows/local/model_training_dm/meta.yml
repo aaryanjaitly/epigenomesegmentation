@@ -1,0 +1,21 @@
+name: model_training_dm
+description: Performs HMM training with duration modeling for chromatin segmentation.
+keywords:
+  - HMM
+  - training
+  - duration modeling
+components:
+  - episegmix/dm/prepare
+  - episegmix/dm/train
+  - episegmix/dm/decode
+  - episegmix/dm/report
+input:
+  - ch_input:
+      type: channel
+      description: Unified channel containing metadata, histone counts, and methylation data ready for HMM training
+output:
+  - versions:
+      type: file
+      description: File containing software versions for HMM training and decoding modules
+authors:
+  - "@aaryanjaitly"

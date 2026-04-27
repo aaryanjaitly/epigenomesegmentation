@@ -38,6 +38,134 @@
                 }
             }
         },
+        "episegmix_options": {
+            "title": "EpiSegMix options",
+            "type": "object",
+            "fa_icon": "fas fa-layer-group",
+            "description": "Parameters specific to the EpiSegMix algorithm configuration.",
+            "properties": {
+                "standard": {
+                    "type": "boolean",
+                    "description": "Run the standard HMM model (default).",
+                    "fa_icon": "fas fa-cogs",
+                    "default": false
+                },
+                "duration": {
+                    "type": "boolean",
+                    "description": "Run the duration HMM (DM) model to account for segment length.",
+                    "fa_icon": "fas fa-stopwatch",
+                    "default": false
+                },
+                "DNA": {
+                    "type": "boolean",
+                    "description": "Run the DNA methylation mode.",
+                    "fa_icon": "fas fa-dna",
+                    "default": false
+                },
+                "fitting": {
+                    "type": "boolean",
+                    "description": "Run the distribution fitting mode to find optimal statistical distributions.",
+                    "fa_icon": "fas fa-chart-line",
+                    "default": false
+                },
+                "counts": {
+                    "type": "boolean",
+                    "description": "Run only count generation (skip all downstream analysis).",
+                    "fa_icon": "fas fa-hashtag",
+                    "default": false
+                },
+                "best_fit_segmentation": {
+                    "type": "boolean",
+                    "description": "Automatically run standard segmentation using the best-fit distributions after 'fitting' mode completes.",
+                    "fa_icon": "fas fa-project-diagram",
+                    "default": false
+                },
+                "distributions": {
+                    "type": "string",
+                    "description": "Comma-separated list of statistical distributions to test during 'fitting' mode (e.g., 'NBI,P,ZINB').",
+                    "fa_icon": "fas fa-chart-line",
+                    "default": "NBI,SI,BNB"
+                },
+                "binsize": {
+                    "type": "integer",
+                    "default": 200,
+                    "description": "Genomic bin size in base pairs used for discretising the genome.",
+                    "fa_icon": "fas fa-ruler-horizontal"
+                },
+                "states": {
+                    "type": ["integer", "string"],
+                    "default": "8",
+                    "description": "Number of chromatin states in the HMM model.",
+                    "fa_icon": "fas fa-sort-numeric-up"
+                },
+                "merge": {
+                    "type": "boolean",
+                    "description": "Merge adjacent segments with the same chromatin state label.",
+                    "fa_icon": "fas fa-code-branch"
+                },
+                "decoding": {
+                    "type": "string",
+                    "default": "viterbi",
+                    "enum": ["viterbi", "posterior"],
+                    "description": "Decoding algorithm for inferring the most likely chromatin state sequence.",
+                    "fa_icon": "fas fa-calculator"
+                },
+                "adjustment": {
+                    "type": "integer",
+                    "default": 2,
+                    "description": "Adjustment parameter for emission probability smoothing.",
+                    "hidden": true,
+                    "fa_icon": "fas fa-sliders-h"
+                },
+                "iter": {
+                    "type": "integer",
+                    "default": 200,
+                    "description": "Maximum number of iterations for model training.",
+                    "hidden": true,
+                    "fa_icon": "fas fa-redo"
+                },
+                "epsilon": {
+                    "type": "number",
+                    "default": 1,
+                    "description": "Convergence threshold for the algorithm.",
+                    "hidden": true,
+                    "fa_icon": "fas fa-equals"
+                },
+                "chr_parameter_estimation": {
+                    "type": ["string", "integer"],
+                    "default": "12",
+                    "description": "Chromosome used for initial parameter estimation. Specify by index or name.",
+                    "fa_icon": "fas fa-dna"
+                },
+                "dist_histone": {
+                    "type": "string",
+                    "default": "NBI",
+                    "description": "Default distribution model for histone modification counts if not specified in the samplesheet (e.g. NBI for negative binomial).",
+                    "fa_icon": "fas fa-chart-bar"
+                },
+                "dist_methyl": {
+                    "type": "string",
+                    "default": "BI",
+                    "description": "Default distribution model for DNA methylation levels if not specified in the samplesheet (e.g. BI for beta-binomial).",
+                    "fa_icon": "fas fa-chart-bar"
+                }
+            }
+        },
+        "reference_genome_options": {
+            "title": "Reference genome options",
+            "type": "object",
+            "fa_icon": "fas fa-dna",
+            "description": "Reference genome related files and options required for the workflow.",
+            "properties": {
+                "genome": {
+                    "type": "string",
+                    "description": "Name of reference genome.",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Use this parameter to give the ID for the reference genome (e.g. `hg38` or `mm10`).",
+                    "default": "hg38"
+                }
+            }
+        },
         "institutional_config_options": {
             "title": "Institutional config options",
             "type": "object",
@@ -173,6 +301,12 @@
     "allOf": [
         {
             "$ref": "#/$defs/input_output_options"
+        },
+        {
+            "$ref": "#/$defs/episegmix_options"
+        },
+        {
+            "$ref": "#/$defs/reference_genome_options"
         },
         {
             "$ref": "#/$defs/institutional_config_options"

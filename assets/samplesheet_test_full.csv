@@ -1,0 +1,11 @@
+sample_id,replicate,epigenetic_mark,file_name,modality,paired_end,distribution
+Forebrain_16.5,1,WGBS,https://www.encodeproject.org/files/ENCFF457SPJ/@@download/ENCFF457SPJ.bed.gz,WGBS,true,BI
+Forebrain_16.5,1,ATAC,https://www.encodeproject.org/files/ENCFF410SFZ/@@download/ENCFF410SFZ.bam,ATAC-seq,true,NBI
+Forebrain_16.5,1,H3K36me3,https://www.encodeproject.org/files/ENCFF847KKK/@@download/ENCFF847KKK.bam,ChIP-seq,false,NBI
+Forebrain_16.5,1,H3K27me3,https://www.encodeproject.org/files/ENCFF345MWS/@@download/ENCFF345MWS.bam,ChIP-seq,false,NBI
+Forebrain_16.5,1,H3K9me3,https://www.encodeproject.org/files/ENCFF592PLJ/@@download/ENCFF592PLJ.bam,ChIP-seq,false,NBI
+Forebrain_16.5,1,H3K9ac,https://www.encodeproject.org/files/ENCFF438OOM/@@download/ENCFF438OOM.bam,ChIP-seq,false,NBI
+Forebrain_16.5,1,H3K27ac,https://www.encodeproject.org/files/ENCFF855BNT/@@download/ENCFF855BNT.bam,ChIP-seq,false,NBI
+Forebrain_16.5,1,H3K4me3,https://www.encodeproject.org/files/ENCFF062IUH/@@download/ENCFF062IUH.bam,ChIP-seq,false,NBI
+Forebrain_16.5,1,H3K4me1,https://www.encodeproject.org/files/ENCFF962VUP/@@download/ENCFF962VUP.bam,ChIP-seq,false,NBI
+Forebrain_16.5,1,H3K4me2,https://www.encodeproject.org/files/ENCFF474QQY/@@download/ENCFF474QQY.bam,ChIP-seq,false,NBI

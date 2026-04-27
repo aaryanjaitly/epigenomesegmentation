@@ -1,0 +1,26 @@
+name: process_histones
+description: Processes Histone BAM files.
+keywords:
+  - bam
+  - counts
+  - chip_seq
+  - signal_processing
+components:
+  - clean/and/index/bam
+  - generate/count/matrix/bam
+input:
+  - ch_input_bam:
+      type: channel
+      description: Channel containing metadata and BAM files for histone ChIP-seq data
+  - chrom_sizes:
+      type: file
+      description: File containing chromosome lengths for index and coverage generation
+output:
+  - counts:
+      type: channel
+      description: Channel containing the final processed count matrices for histone marks
+  - versions:
+      type: file
+      description: File containing software versions for histone BAM processing tools
+authors:
+  - "@aaryanjaitly"

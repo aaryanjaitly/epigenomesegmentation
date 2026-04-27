@@ -1,0 +1,29 @@
+name: prepare_genome
+description: Downloads chromosome sizes and generates genomic bins.
+keywords:
+  - genome
+  - bins
+  - reference_preparation
+  - chromosome_sizes
+components:
+  - generate/genome/bins
+  - get/genome/chrom/size
+input:
+  - genome:
+      type: string
+      description: Name of the reference genome being used (e.g., hg38, mm10)
+  - binsize:
+      type: integer
+      description: The size in base pairs for the generated genomic windows
+output:
+  - chrom_sizes:
+      type: file
+      description: File containing the lengths of all chromosomes in the reference genome
+  - bins:
+      type: file
+      description: BED file containing the generated genomic windows for analysis
+  - versions:
+      type: file
+      description: File containing software versions for genome preparation tools
+authors:
+  - "@aaryanjaitly"

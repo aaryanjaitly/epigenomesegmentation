@@ -1,0 +1,21 @@
+name: model_training_std
+description: Performs standard HMM training and decoding for chromatin segmentation.
+keywords:
+  - HMM
+  - training
+  - segmentation
+components:
+  - episegmix/std/prepare
+  - episegmix/std/train
+  - episegmix/std/decode
+  - episegmix/std/report
+input:
+  - ch_input:
+      type: channel
+      description: Unified channel containing metadata, histone counts, and methylation data ready for HMM training
+output:
+  - versions:
+      type: file
+      description: File containing software versions for HMM training and decoding modules
+authors:
+  - "@aaryanjaitly"

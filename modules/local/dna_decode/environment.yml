@@ -1,0 +1,16 @@
+name: episegmix
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python
+  - scipy
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - pyyaml
+  - cmake
+  - boost
+  - root

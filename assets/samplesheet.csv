@@ -1,3 +1,4 @@
-sample,fastq_1,fastq_2
-SAMPLE_PAIRED_END,/path/to/fastq/files/AEG588A1_S1_L002_R1_001.fastq.gz,/path/to/fastq/files/AEG588A1_S1_L002_R2_001.fastq.gz
-SAMPLE_SINGLE_END,/path/to/fastq/files/AEG588A4_S4_L003_R1_001.fastq.gz,
+sample_id,replicate,epigenetic_mark,file_name,modality,paired_end,distribution
+kidney_P0,1,H3K4me3,https://raw.githubusercontent.com/nf-core/test-datasets/epigenomesegmentation/testdata/H3K4me3_mm10_kidney_chr12_reduced.bam,ChIP-seq,false,NBI
+kidney_P0,1,H3K36me3,https://raw.githubusercontent.com/nf-core/test-datasets/epigenomesegmentation/testdata/H3K36me3_mm10_kidney_chr12_reduced.bam,ChIP-seq,false,NBI
+kidney_P0,1,WGBS,https://raw.githubusercontent.com/nf-core/test-datasets/epigenomesegmentation/testdata/WGBS_mm10_kidney_chr12_reduced.bed.gz,WGBS,true,BI

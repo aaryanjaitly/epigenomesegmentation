@@ -4,51 +4,83 @@
 
 > _Documentation of pipeline parameters is generated automatically from the pipeline schema and can no longer be found in markdown files._
 
-## Introduction
+## Pipeline parameters
 
-<!-- TODO nf-core: Add documentation about anything specific to running your pipeline. For general topics, please point to (and add to) the main nf-core website. -->
+Please provide pipeline parameters via the CLI or Nextflow `-params-file` option. Custom config files including those provided by the `-c` Nextflow option can be used to provide any configuration except for parameters; see [docs](https://nf-co.re/usage/configuration#custom-configuration-files).
 
 ## Samplesheet input
 
-You will need to create a samplesheet with information about the samples you would like to analyse before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row as shown in the examples below.
+You will need to create a samplesheet with information about the samples you would like to analyse before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 7 columns, and a header row as shown in the examples below.
 
 ```bash
 --input '[path to samplesheet file]'
 ```
 
-### Multiple runs of the same sample
+### Grouping and Replicates
 
-The `sample` identifiers have to be the same when you have re-sequenced the same sample more than once e.g. to increase sequencing depth. The pipeline will concatenate the raw reads before performing any downstream analysis. Below is an example for the same sample sequenced across 3 lanes:
+The `sample_id` identifiers must be identical for all data files that belong to the same biological sample. The pipeline groups all files sharing the same `sample_id` and processes them together to build a unified segmentation model for that sample.
+
+If you have multiple files for the **exact same histone mark** within a single sample, the pipeline treats them as biological or technical replicates. You must assign each of these files a unique integer in the `replicate` column. 
+
+**NOTE:** Replicates for methylation data (`.bed` or `.bed.gz` files) are not currently supported by the pipeline. Methylation data should only have one entry per `sample_id`.
+
+Below is an example of a samplesheet where a sample has two replicates for the H3K4me3 mark, alongside single entries for another histone mark and methylation data:
 
 ```csv title="samplesheet.csv"
-sample,fastq_1,fastq_2
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
-CONTROL_REP1,AEG588A1_S1_L003_R1_001.fastq.gz,AEG588A1_S1_L003_R2_001.fastq.gz
-CONTROL_REP1,AEG588A1_S1_L004_R1_001.fastq.gz,AEG588A1_S1_L004_R2_001.fastq.gz
+sample_id,replicate,epigenetic_mark,file_name,modality,paired_end,distribution
+SAMPLE_A,1,H3K4me3,./data/rep1_H3K4me3.bam,ChIP-seq,true,NBI
+SAMPLE_A,2,H3K4me3,./data/rep2_H3K4me3.bam,ChIP-seq,true,NBI
+SAMPLE_A,1,H3K27ac,./data/rep1_H3K27ac.bam,ChIP-seq,true,NBI
+SAMPLE_A,1,WGBS,./data/sampleA_methyl.bed.gz,WGBS,true,BI
 ```
 
 ### Full samplesheet
 
-The pipeline will auto-detect whether a sample is single- or paired-end using the information provided in the samplesheet. The samplesheet can have as many columns as you desire, however, there is a strict requirement for the first 3 columns to match those defined in the table below.
+The pipeline uses a **7-column structured format** to process and group epigenetic data.  
+File types are inferred automatically:
+- Histone -> `.bam`, `.bam.gz`
+- Methylation -> `.bed`, `.bed.gz`
 
-A final samplesheet file consisting of both single- and paired-end data may look something like the one below. This is for 6 samples, where `TREATMENT_REP3` has been sequenced twice.
+A complete samplesheet file consisting of multiple samples, including replicates for specific histone marks and paired methylation data, may look like the one below. This example shows two samples (`CONTROL` and `TREATMENT`), where `CONTROL` has two replicates for the `H3K4me3` mark.
 
 ```csv title="samplesheet.csv"
-sample,fastq_1,fastq_2
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
-CONTROL_REP2,AEG588A2_S2_L002_R1_001.fastq.gz,AEG588A2_S2_L002_R2_001.fastq.gz
-CONTROL_REP3,AEG588A3_S3_L002_R1_001.fastq.gz,AEG588A3_S3_L002_R2_001.fastq.gz
-TREATMENT_REP1,AEG588A4_S4_L003_R1_001.fastq.gz,
-TREATMENT_REP2,AEG588A5_S5_L003_R1_001.fastq.gz,
-TREATMENT_REP3,AEG588A6_S6_L003_R1_001.fastq.gz,
-TREATMENT_REP3,AEG588A6_S6_L004_R1_001.fastq.gz,
+sample_id,replicate,epigenetic_mark,file_name,modality,paired_end,distribution
+CONTROL,1,H3K4me3,./data/control_rep1_H3K4me3.bam,ChIP-seq,true,NBI
+CONTROL,2,H3K4me3,./data/control_rep2_H3K4me3.bam,ChIP-seq,true,NBI
+CONTROL,1,H3K27ac,./data/control_H3K27ac.bam,ChIP-seq,true,NBI
+CONTROL,1,WGBS,./data/control_methyl.bed.gz,WGBS,true,BI
+TREATMENT,1,H3K4me3,./data/treatment_H3K4me3.bam,ChIP-seq,true,NBI
+TREATMENT,1,H3K27ac,./data/treatment_H3K27ac.bam,ChIP-seq,true,NBI
+TREATMENT,1,WGBS,./data/treatment_methyl.bed.gz,WGBS,true,BI
 ```
 
-| Column    | Description                                                                                                                                                                            |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sample`  | Custom sample name. This entry will be identical for multiple sequencing libraries/runs from the same sample. Spaces in sample names are automatically converted to underscores (`_`). |
-| `fastq_1` | Full path to FastQ file for Illumina short reads 1. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
-| `fastq_2` | Full path to FastQ file for Illumina short reads 2. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
+| Column | Description |
+|--------|-------------|
+| `sample_id` | Custom sample name. Must be identical across all entries of the same sample. |
+| `replicate` | Integer replicate number. Unique for same `epigenetic_mark` within a sample. |
+| `epigenetic_mark` | Target mark or assay type (e.g., `H3K4me3`, `H3K27ac`, `WGBS`). |
+| `file_name` | Full path to file. `.bam` / `.bam.gz` (histone), `.bed` / `.bed.gz` (methylation). |
+| `modality` | Supported: `ChIP-seq`, `WGBS`, `ATAC-seq`, `NOMe-seq`, `chip`, `wgbs`, `atac`, `nome`. |
+| `paired_end` | Boolean (`true` or `false`). |
+| `distribution` | Statistical distribution used for modeling. |
+
+### Supported Distributions
+
+| Code | Name |
+|------|------|
+| `PO` | Poisson |
+| `ZAP` | Zero Adjusted Poisson |
+| `BI` | Binomial |
+| `NBI` | Negative Binomial |
+| `ZANBI` | Zero Adjusted Negative Binomial |
+| `BB` | Beta Binomial |
+| `BNB` | Beta Negative Binomial |
+| `ZABNB` | Zero Adjusted Beta Negative Binomial |
+| `SI` | Sichel |
+| `ZASI` | Zero Adjusted Sichel |
+| `GA` | Gaussian |
+| `B` | Bernoulli *(requires binarized input)* |
+
 
 An [example samplesheet](../assets/samplesheet.csv) has been provided with the pipeline.
 
@@ -57,7 +89,7 @@ An [example samplesheet](../assets/samplesheet.csv) has been provided with the p
 The typical command for running the pipeline is as follows:
 
 ```bash
-nextflow run nf-core/epigenomesegmentation --input ./samplesheet.csv --outdir ./results  -profile docker
+nextflow run nf-core/epigenomesegmentation --input ./samplesheet.csv --outdir ./results --genome hg38 -profile docker
 ```
 
 This will launch the pipeline with the `docker` configuration profile. See below for more information about profiles.
@@ -75,6 +107,67 @@ If you wish to repeatedly use the same parameters for multiple runs, rather than
 
 Pipeline settings can be provided in a `yaml` or `json` file via `-params-file <file>`.
 
+### EpiSegMix Run Modes
+
+The pipeline's behavior can be significantly altered using modes for EpiSegMix tool as boolean flags `--standard, --duration, --DNA, --fitting` and the `--merge` flag. By default, the pipeline runs in `standard` mode.
+
+#### Standard Mode (Default)
+
+```bash
+--standard
+```
+
+Processes only histone data (BAM files) to generate chromatin segmentation models. Methylation data provided in the samplesheet will be ignored in this mode.
+
+#### DNA Mode
+
+```bash
+--DNA
+```
+
+Bypasses histone processing entirely. The pipeline will process only methylation data (BED files), generate methylation-specific bins, and train a DNA-only segmentation model.
+
+#### Duration Mode
+
+```bash
+--duration
+```
+
+Executes the duration-based Hidden Markov Model (HMM). This is useful for modeling states with explicit length distributions to better capture the spatial characteristics of epigenetic domains.
+
+#### Fitting Mode
+
+```bash
+--fitting
+```
+
+This mode does not perform full segmentation. Instead, it extracts counts and runs distribution-fitting algorithms to help you determine the optimal statistical distributions (e.g., NBI, BI, SI, BNB) for your specific epigenetic marks. You can specify a comma-separated list of distributions to test using the `--distributions` parameter.
+However, if `--best_fit_segmentation` is set to true along with fitting, it will run segmentation on the best-fitting distribution found. You can also mention `--duration` with it for segmentation to be done using duration modules.
+
+#### Merging Histone and Methylation Data
+
+```bash
+--merge
+```
+When the `--merge` flag is provided, the pipeline processes **both** histone BAM files and methylation BED files. It merges their respective count matrices into a single, comprehensive dataset and trains a combined segmentation model across all modalities.
+
+#### Exploring Multiple States
+
+```bash
+--states 8,10,12
+```
+
+The `--states` parameter defines the number of chromatin states for the segmentation model. You can provide a single integer or a comma separated list of values (e.g., `8,10,12`) to train models for multiple state configurations simultaneously in parallel. The pipeline itself automatically handles the creation and management of all necessary configuration files for each state!
+
+#### Parameter Estimation Chromosome
+
+```bash
+--chr_parameter_estimation 12
+```
+
+The `--chr_parameter_estimation` parameter defines which chromosome should be used for the initial parameter estimation step before full model training. By default, it uses chromosome `12`. You can provide an integer (e.g., `12`, `22`), or a string identifier if you are using specific custom reference genomes or pilot data (e.g., `pilot_hg38`).
+
+
 > [!WARNING]
 > Do not use `-c <file>` to specify parameters as this will result in errors. Custom config files specified with `-c` must only be used for [tuning process resource specifications](https://nf-co.re/docs/usage/configuration#tuning-workflow-resources), other infrastructural tweaks (such as output directories), or module arguments (args).
 
@@ -89,6 +182,7 @@ with:
 ```yaml title="params.yaml"
 input: './samplesheet.csv'
 outdir: './results/'
+genome: 'hg38'
 <...>
 ```
 

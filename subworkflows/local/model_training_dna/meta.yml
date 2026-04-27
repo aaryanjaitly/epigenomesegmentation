@@ -1,0 +1,24 @@
+name: model_training_dna
+description: Performs HMM training and chromatin segmentation specifically for DNA methylation data.
+keywords:
+  - dna_methylation
+  - hmm_training
+  - epigenetic_segmentation
+  - wgbs_analysis
+components:
+  - episegmix/dna/prepare
+  - episegmix/dna/train
+  - episegmix/dna/decode
+  - episegmix/dna/report
+input:
+  - ch_dna_model_input:
+      type: channel
+      description: |
+        Channel containing metadata, methylation count matrices, 
+        and the desired number of hidden states for the DNA-only model.
+output:
+  - versions:
+      type: file
+      description: File containing software versions for the DNA methylation HMM modules
+authors:
+  - "@aaryanjaitly"

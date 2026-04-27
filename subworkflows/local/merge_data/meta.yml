@@ -1,0 +1,32 @@
+name: merge_data
+description: Merges datasets.
+keywords:
+  - merge
+  - multi_omics_integration
+  - data_consolidation
+  - epigenomics
+components:
+  - merge/counts
+  - split/merged/counts
+input:
+  - ch_histone_counts:
+      type: channel
+      description: Channel containing processed count matrices for histone modifications
+  - ch_meth_counts:
+      type: channel
+      description: Channel containing processed count matrices for DNA methylation
+  - ch_bins:
+      type: file
+      description: Genomic bins BED file used to synchronize multi-omic data points
+  - ch_chrom_sizes:
+      type: file
+      description: File containing chromosome lengths for genomic coordinate validation
+output:
+  - split_counts:
+      type: channel
+      description: Channel containing the integrated and merged multi-omic count matrices
+  - versions:
+      type: file
+      description: File containing software versions for data merging and splitting tools
+authors:
+  - "@aaryanjaitly"

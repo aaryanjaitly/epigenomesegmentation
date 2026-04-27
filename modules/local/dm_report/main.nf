@@ -1,0 +1,88 @@
+process DM_REPORT {
+    tag "Report: ${meta.id}"
+    label 'process_low'
+    conda "${moduleDir}/environment.yml"
+    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'docker://aaryanjaitly/episegmix:new_plots' :
+        'aaryanjaitly/episegmix:new_plots' }"
+
+    // Clean Path Setup:
+    // 1. PATH: Adds your local bin subdirectories so Conda finds the scripts.
+    // 2. PYTHONPATH: Ensures Python imports (like distribution.py) work correctly.
+    beforeScript """
+        export PATH=\$PATH:${projectDir}/bin/workflowTopology:${projectDir}/bin/src
+        export PYTHONPATH=\$PYTHONPATH:/app/src:${projectDir}/bin/src
+    """
+
+    input:
+    tuple val(meta), path(config), path(model), path(bed), path(seg_txt)
+
+    output:
+    path "plots/${meta.id}/*.png" , emit: plots
+    path "plots/${meta.id}/*.html", emit: html_report
+    path "versions.yml"           , emit: versions
+
+    script:
+    """
+    set -euo pipefail
+    export MPLCONFIGDIR=\$(pwd)
+
+    mkdir -p plots/${meta.id}
+    
+    # 1. GENERATE DATA STATISTICS
+    # Found in bin/src (Conda) or /usr/local/bin (Docker)
+    plot_statistics.py \\
+        -d "${config}" \\
+        -p "plots/${meta.id}/${meta.id}-histogram.png" \\
+        -c "plots/${meta.id}/${meta.id}-correlation.png" \\
+        -m "plots/${meta.id}/${meta.id}-methylation-density.png"
+
+    # 2. GENERATE MODEL RESULTS PLOTS
+    results.py \\
+        -c "${seg_txt}" \\
+        -j "${model}" \\
+        -e "plots/${meta.id}/${meta.id}-meanEmission.png" \\
+        -t "plots/${meta.id}/${meta.id}-transitionMatrix.png" \\
+        -m "plots/${meta.id}/${meta.id}-stateMembership.png" \\
+        -l "plots/${meta.id}/${meta.id}-stateLength.png" \\
+        -s viterbi \\
+        -n "plots/${meta.id}/${meta.id}-normEmission.png" \\
+        -d "${bed}"
+
+    # 3. GENERATE STATE DISTRIBUTIONS
+    plot_state_histograms.py \\
+        -c "${seg_txt}" \\
+        -j "${model}" \\
+        -a "plots/${meta.id}/${meta.id}-stateDistribution.png" \\
+        -s viterbi
+
+    # 4. GENERATE STATE COLOR MAPS
+    plot_state_colors.py \\
+        -d "${bed}" \\
+        -o "plots/${meta.id}/${meta.id}-state-colors.png"
+
+    # 5. ASSEMBLE FINAL HTML REPORT
+    # Found in bin/workflowTopology (Conda) or /usr/local/bin (Docker)
+    segmentation_report_dm.sh \\
+        -n "${meta.id}" \\
+        -o "plots/${meta.id}" \\
+        -i true
+
+    cat <<-END_VERSIONS > versions.yml
+    "${task.process}":
+        python: \$(python --version | awk '{print \$2}')
+    END_VERSIONS
+    """
+
+    stub:
+    """
+    mkdir -p plots/${meta.id}
+    touch plots/${meta.id}/dummy.png
+    touch plots/${meta.id}/dummy.html
+
+    cat <<-END_VERSIONS > versions.yml
+    "${task.process}":
+        python: \$(python --version | awk '{print \$2}')
+    END_VERSIONS
+    """
+}

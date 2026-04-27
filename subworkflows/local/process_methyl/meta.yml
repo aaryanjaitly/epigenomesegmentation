@@ -1,0 +1,22 @@
+name: process_methyl
+description: Processes methylation BED files.
+keywords:
+  - methylation
+  - wgbs
+  - epigenetic_modification
+  - bed_processing
+components:
+  - generate/count/matrix/bed
+input:
+  - ch_input_bed:
+      type: channel
+      description: Channel containing metadata and BED files for DNA methylation data (e.g., WGBS)
+output:
+  - counts:
+      type: channel
+      description: Channel containing the processed count matrices for methylation data
+  - versions:
+      type: file
+      description: File containing software versions for methylation BED processing tools
+authors:
+  - "@aaryanjaitly"
