@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM
+CMAKE_SOURCE_DIR = /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build
+CMAKE_BINARY_DIR = /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -87,14 +87,14 @@ clean: CMakeFiles/LogLikelihood.dir/clean
 CMakeFiles/HMM.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/HMM.dir/build.make CMakeFiles/HMM.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/HMM.dir/build.make CMakeFiles/HMM.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target HMM"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target HMM"
 .PHONY : CMakeFiles/HMM.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/HMM.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/HMM.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles 0
 .PHONY : CMakeFiles/HMM.dir/rule
 
 # Convenience name for target.
@@ -113,14 +113,14 @@ CMakeFiles/HMM.dir/clean:
 CMakeFiles/HMMChromSeg.dir/all: CMakeFiles/HMM.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/HMMChromSeg.dir/build.make CMakeFiles/HMMChromSeg.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/HMMChromSeg.dir/build.make CMakeFiles/HMMChromSeg.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=7,8 "Built target HMMChromSeg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=7,8 "Built target HMMChromSeg"
 .PHONY : CMakeFiles/HMMChromSeg.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/HMMChromSeg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/HMMChromSeg.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles 0
 .PHONY : CMakeFiles/HMMChromSeg.dir/rule
 
 # Convenience name for target.
@@ -139,14 +139,14 @@ CMakeFiles/HMMChromSeg.dir/clean:
 CMakeFiles/TopologyHMM.dir/all: CMakeFiles/HMM.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TopologyHMM.dir/build.make CMakeFiles/TopologyHMM.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TopologyHMM.dir/build.make CMakeFiles/TopologyHMM.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=11,12 "Built target TopologyHMM"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=11,12 "Built target TopologyHMM"
 .PHONY : CMakeFiles/TopologyHMM.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/TopologyHMM.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/TopologyHMM.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles 0
 .PHONY : CMakeFiles/TopologyHMM.dir/rule
 
 # Convenience name for target.
@@ -165,14 +165,14 @@ CMakeFiles/TopologyHMM.dir/clean:
 CMakeFiles/LogLikelihood.dir/all: CMakeFiles/HMM.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/LogLikelihood.dir/build.make CMakeFiles/LogLikelihood.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/LogLikelihood.dir/build.make CMakeFiles/LogLikelihood.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=9,10 "Built target LogLikelihood"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=9,10 "Built target LogLikelihood"
 .PHONY : CMakeFiles/LogLikelihood.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/LogLikelihood.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/LogLikelihood.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles 0
 .PHONY : CMakeFiles/LogLikelihood.dir/rule
 
 # Convenience name for target.

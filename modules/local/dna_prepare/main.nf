@@ -6,7 +6,10 @@ process DNA_PREPARE {
         'docker://aaryanjaitly/episegmix:new_plots' :
         'aaryanjaitly/episegmix:new_plots' }"
 
-    beforeScript "export PATH=\$PATH:${projectDir}/bin/src; export PYTHONPATH=\$PYTHONPATH:/app/src:${projectDir}/bin/src"
+    beforeScript """
+        export PATH=\$PATH:${projectDir}/bin/src; 
+        export PYTHONPATH=\$PYTHONPATH:/app/src:${projectDir}/bin/src
+    """
 
     input:
     tuple val(meta), path(meth), val(state)
@@ -21,39 +24,22 @@ process DNA_PREPARE {
 
     script:
     def prefix = meta.id
-    def meth_list = meth instanceof List ? meth : [meth]
-    
-    // Format file paths for YAML
-    def yaml_data
-    if (meth_list.size() == 1) {
-        yaml_data = "\"\$(pwd)/${meth_list[0]}\""
-    } else {
-        yaml_data = meth_list.collect { "\"\$(pwd)/${it}\"" }.join(", ")
-        yaml_data = "[${yaml_data}]"  
-    }
-
-    // String parsing instead of Bash associative arrays
+    def meth_files = (meth instanceof List ? meth : [meth]).join(' ')
     def dist_meth = params.dist_methyl.toString()
     def dist_overrides = meta.distributions ? meta.distributions.collect { k, v -> "${k}:${v}" }.join(",") : ""
 
     """
     set -euo pipefail
     
-    # 1. PARSE DISTRIBUTIONS SAFELY
-    METH_DIST="${dist_meth}"
-    if [[ "${dist_overrides}" == *"WGBS:"* ]]; then
-        METH_DIST=\$(echo "${dist_overrides}" | grep -o "WGBS:[^,]*" | cut -d: -f2)
-    fi
+    # 1. Create YAML config via external script
+    create_dna_yaml.py \\
+        --prefix "${prefix}" \\
+        --meth ${meth_files} \\
+        --state "${state}" \\
+        --dist_meth "${dist_meth}" \\
+        --overrides "${dist_overrides}"
 
-    # 2. CREATE YAML CONFIG
-    cat <<EOF > "${prefix}.yaml"
-distribution: \${METH_DIST}
-states: ${state}
-data: ${yaml_data}
-marker: WGBS
-EOF
-
-    # 3. GENERATE COUNTS
+    # 2. Generate Counts
     get_meth_counts.py \\
         -d "\$(pwd)/${prefix}.yaml" \\
         -c "\$(pwd)/${prefix}.trainCounts.txt" \\
@@ -79,6 +65,6 @@ END_VERSIONS
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         python: \$(python --version | awk '{print \$2}')
-    END_VERSIONS
+END_VERSIONS
     """
 }

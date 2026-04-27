@@ -1,5 +1,5 @@
 CMakeFiles/HMM.dir/HMM.cpp.o: \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/HMM.cpp \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/HMM.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/limits \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -168,7 +168,7 @@ CMakeFiles/HMM.dir/HMM.cpp.o: \
  /usr/include/c++/11/bits/this_thread_sleep.h /usr/include/c++/11/chrono \
  /usr/include/c++/11/ratio /usr/include/c++/11/ctime \
  /usr/include/c++/11/bits/parse_numbers.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/HMM.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/HMM.h \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
@@ -187,7 +187,7 @@ CMakeFiles/HMM.dir/HMM.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/matrix.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/matrix.h \
  /usr/include/c++/11/iostream /usr/include/c++/11/ostream \
  /usr/include/c++/11/ios /usr/include/c++/11/bits/ios_base.h \
  /usr/include/c++/11/bits/locale_classes.h \
@@ -205,7 +205,7 @@ CMakeFiles/HMM.dir/HMM.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/distribution.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/distribution.h \
  /usr/include/c++/11/numeric /usr/include/c++/11/bits/stl_numeric.h \
  /usr/include/c++/11/pstl/glue_numeric_defs.h \
  /opt/root/include/Math/Minimizer.h /opt/root/include/Math/IFunction.h \
@@ -221,4 +221,4 @@ CMakeFiles/HMM.dir/HMM.cpp.o: \
  /usr/include/c++/11/bits/algorithmfwd.h \
  /usr/include/c++/11/bits/stl_heap.h \
  /usr/include/c++/11/bits/uniform_int_dist.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/log_prob.h
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/log_prob.h

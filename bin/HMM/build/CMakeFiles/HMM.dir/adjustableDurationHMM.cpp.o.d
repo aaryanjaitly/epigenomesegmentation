@@ -1,7 +1,7 @@
 CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.o: \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/adjustableDurationHMM.cpp \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/adjustableDurationHMM.cpp \
  /usr/include/stdc-predef.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/adjustableDurationHMM.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/adjustableDurationHMM.h \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -47,7 +47,7 @@ CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.o: \
  /usr/include/c++/11/utility /usr/include/c++/11/bits/stl_relops.h \
  /usr/include/c++/11/array /usr/include/c++/11/bits/uses_allocator.h \
  /usr/include/c++/11/bits/invoke.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/HMM.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/HMM.h \
  /usr/include/c++/11/string /usr/include/c++/11/bits/stringfwd.h \
  /usr/include/c++/11/bits/char_traits.h \
  /usr/include/c++/11/bits/postypes.h /usr/include/c++/11/cwchar \
@@ -160,7 +160,7 @@ CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/matrix.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/matrix.h \
  /usr/include/c++/11/iostream /usr/include/c++/11/ostream \
  /usr/include/c++/11/ios /usr/include/c++/11/bits/ios_base.h \
  /usr/include/c++/11/bits/locale_classes.h \
@@ -179,7 +179,7 @@ CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/distribution.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/distribution.h \
  /usr/include/c++/11/numeric /usr/include/c++/11/bits/stl_numeric.h \
  /usr/include/c++/11/pstl/glue_numeric_defs.h \
  /opt/root/include/Math/Minimizer.h /opt/root/include/Math/IFunction.h \
@@ -222,7 +222,7 @@ CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.o: \
  /usr/include/c++/11/ratio /usr/include/c++/11/ctime \
  /usr/include/c++/11/bits/parse_numbers.h /usr/include/c++/11/algorithm \
  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/log_prob.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/log_prob.h \
  /usr/include/c++/11/math.h /usr/include/c++/11/fstream \
  /usr/include/c++/11/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \

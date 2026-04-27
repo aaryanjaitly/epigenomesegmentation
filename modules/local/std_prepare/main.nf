@@ -6,8 +6,10 @@ process STD_PREPARE {
         'docker://aaryanjaitly/episegmix:new_plots' :
         'aaryanjaitly/episegmix:new_plots' }"
 
-    // Environmental setup consistent with DM mode
-    beforeScript "export PATH=\$PATH:${projectDir}/bin/src; export PYTHONPATH=\$PYTHONPATH:/app/src:${projectDir}/bin/src"
+    beforeScript """
+        export PATH=\$PATH:${projectDir}/bin/src; 
+        export PYTHONPATH=\$PYTHONPATH:/app/src:${projectDir}/bin/src
+    """
 
     input:
     tuple val(meta), path(histone), path(meth), val(state)
@@ -29,45 +31,18 @@ process STD_PREPARE {
     """
     set -euo pipefail
     
-    HAS_METH=0
-    if [ -s "${meth}" ]; then HAS_METH=1; fi
+    # 1. GENERATE YAML CONFIG
+    create_std_yaml.py \\
+        --prefix "${prefix}" \\
+        --histone "${histone}" \\
+        --meth "${meth}" \\
+        --state "${state}" \\
+        --chr_params "${chr_params}" \\
+        --dist_hist "${dist_hist}" \\
+        --dist_meth "${dist_meth}" \\
+        --overrides "${dist_overrides}"
 
-    HEADER=\$(head -n 1 "${histone}")
-    FILE_MARKS=(\$(echo "\$HEADER" | cut -f4-))
-    
-    # 1. GENERATE MARKER SPEC (Nextflow-consistent parsing)
-    MARKER_SPEC=""
-    for M in "\${FILE_MARKS[@]}"; do
-        DIST="${dist_hist}"
-        # Check if an override exists in the dist_overrides string
-        if [[ "${dist_overrides}" == *"\$M:"* ]]; then
-             DIST=\$(echo "${dist_overrides}" | grep -o "\$M:[^,]*" | cut -d: -f2)
-        fi
-        MARKER_SPEC="\${MARKER_SPEC}  - name: \${M}\n    distribution: \${DIST}\n"
-    done
-
-    # 2. CREATE YAML CONFIG
-    cat <<EOF > "${prefix}.yaml"
-states: ${state}
-marker: \${#FILE_MARKS[@]}
-marker_spec:
-\${MARKER_SPEC}data: [\$(pwd)/${histone}]
-chr: ${chr_params}
-EOF
-
-    # 3. ADD METHYLATION IF PRESENT
-    if [ "\$HAS_METH" -eq 1 ]; then
-        METH_DIST="${dist_meth}"
-        if [[ "${dist_overrides}" == *"WGBS:"* ]]; then
-             METH_DIST=\$(echo "${dist_overrides}" | grep -o "WGBS:[^,]*" | cut -d: -f2)
-        fi
-        cat <<EOF >> "${prefix}.yaml"
-dna_methylation: \${METH_DIST}
-meth_data: [\$(pwd)/${meth}]
-EOF
-    fi
-
-    # 4. EXECUTE COUNT GENERATION
+    # 2. EXECUTE COUNT GENERATION
     get_counts.py \\
         -d "${prefix}.yaml" \\
         -c "${prefix}-train-counts.txt" \\
@@ -91,6 +66,6 @@ END_VERSIONS
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         python: \$(python --version | awk '{print \$2}')
-    END_VERSIONS
+END_VERSIONS
     """
 }

@@ -6,7 +6,6 @@ process DM_DECODE {
         'docker://aaryanjaitly/episegmix:new_plots' :
         'aaryanjaitly/episegmix:new_plots' }"
 
-    // Clean paths for local Mac (Conda) runs
     beforeScript """
         export PATH=\$PATH:${projectDir}/bin/src:${projectDir}/bin/HMM/build
         export PYTHONPATH=\$PYTHONPATH:/app/src:${projectDir}/bin/src

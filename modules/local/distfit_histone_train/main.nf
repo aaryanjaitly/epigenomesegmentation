@@ -6,7 +6,10 @@ process DISTFIT_HISTONE_TRAIN {
         'docker://aaryanjaitly/episegmix:new_plots' :
         'aaryanjaitly/episegmix:new_plots' }"
 
-    beforeScript "export PATH=\$PATH:${projectDir}/bin/src:${projectDir}/bin/HMM/build; export PYTHONPATH=\$PYTHONPATH:/app/src:${projectDir}/bin/src"
+    beforeScript """
+        export PATH=\$PATH:${projectDir}/bin/src:${projectDir}/bin/HMM/build; 
+        export PYTHONPATH=\$PYTHONPATH:/app/src:${projectDir}/bin/src
+    """
 
     input:
     tuple val(meta), path(histone_data), val(mark), val(dist)
@@ -28,14 +31,7 @@ process DISTFIT_HISTONE_TRAIN {
     fi
 
     # 1. Config (Strictly Histone)
-    cat <<EOF > ${prefix}.yaml
-states: 3
-marker: 1
-marker_spec:
-  - name: ${mark}
-    distribution: ${dist}
-data: [\$(readlink -f ${histone_data})]
-EOF
+    echo -e "states: 3\\nmarker: 1\\nmarker_spec:\\n  - name: ${mark}\\n    distribution: ${dist}\\ndata: [\$(readlink -f ${histone_data})]" > ${prefix}.yaml
 
     # 2. Get Counts
     get_counts.py \\
@@ -51,16 +47,10 @@ EOF
         -m "${prefix}.yaml" \\
         -j "${prefix}.preinit.json"
 
-    # 4. Inject Topology directly
-    python -c "
-import json
-with open('${prefix}.preinit.json') as f:
-    hmm = json.load(f)
-N = int(hmm['states'])
-hmm['topology'] = {str(s+1): [s] for s in range(N)}
-with open('${prefix}.init.json', 'w') as f:
-    json.dump(hmm, f, indent=4)
-"
+    # 4. Inject Topology via external script
+    inject_topology.py \\
+        -i "${prefix}.preinit.json" \\
+        -o "${prefix}.init.json"
 
     # 5. Train HMM
     TopologyHMM \\
@@ -86,6 +76,6 @@ END_VERSIONS
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         python: \$(python --version | awk '{print \$2}')
-    END_VERSIONS
+END_VERSIONS
     """
 }

@@ -1,5 +1,5 @@
 CMakeFiles/LogLikelihood.dir/main_logL.cpp.o: \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/main_logL.cpp \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/main_logL.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -866,13 +866,13 @@ CMakeFiles/LogLikelihood.dir/main_logL.cpp.o: \
  /opt/root/include/TDataType.h /opt/root/include/Bytes.h \
  /opt/root/include/Byteswap.h /opt/root/include/TError.h \
  /opt/root/include/DllImport.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/adjustableDurationHMM.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/HMM.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/matrix.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/distribution.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/adjustableDurationHMM.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/HMM.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/matrix.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/distribution.h \
  /usr/include/c++/11/numeric /usr/include/c++/11/bits/stl_numeric.h \
  /usr/include/c++/11/pstl/glue_numeric_defs.h \
  /opt/root/include/Math/Minimizer.h /opt/root/include/Math/IFunction.h \
  /opt/root/include/Math/IFunctionfwd.h \
  /opt/root/include/Math/MinimizerOptions.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/matrix_reader.h
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/matrix_reader.h

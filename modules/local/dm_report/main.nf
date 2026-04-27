@@ -6,9 +6,6 @@ process DM_REPORT {
         'docker://aaryanjaitly/episegmix:new_plots' :
         'aaryanjaitly/episegmix:new_plots' }"
 
-    // Clean Path Setup:
-    // 1. PATH: Adds your local bin subdirectories so Conda finds the scripts.
-    // 2. PYTHONPATH: Ensures Python imports (like distribution.py) work correctly.
     beforeScript """
         export PATH=\$PATH:${projectDir}/bin/workflowTopology:${projectDir}/bin/src
         export PYTHONPATH=\$PYTHONPATH:/app/src:${projectDir}/bin/src

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM
+CMAKE_SOURCE_DIR = /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build
+CMAKE_BINARY_DIR = /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/HMM.dir/depend.make
@@ -72,72 +72,72 @@ include CMakeFiles/HMM.dir/flags.make
 CMakeFiles/HMM.dir/HMM.cpp.o: CMakeFiles/HMM.dir/flags.make
 CMakeFiles/HMM.dir/HMM.cpp.o: ../HMM.cpp
 CMakeFiles/HMM.dir/HMM.cpp.o: CMakeFiles/HMM.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/HMM.dir/HMM.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HMM.dir/HMM.cpp.o -MF CMakeFiles/HMM.dir/HMM.cpp.o.d -o CMakeFiles/HMM.dir/HMM.cpp.o -c /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/HMM.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/HMM.dir/HMM.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HMM.dir/HMM.cpp.o -MF CMakeFiles/HMM.dir/HMM.cpp.o.d -o CMakeFiles/HMM.dir/HMM.cpp.o -c /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/HMM.cpp
 
 CMakeFiles/HMM.dir/HMM.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HMM.dir/HMM.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/HMM.cpp > CMakeFiles/HMM.dir/HMM.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/HMM.cpp > CMakeFiles/HMM.dir/HMM.cpp.i
 
 CMakeFiles/HMM.dir/HMM.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HMM.dir/HMM.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/HMM.cpp -o CMakeFiles/HMM.dir/HMM.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/HMM.cpp -o CMakeFiles/HMM.dir/HMM.cpp.s
 
 CMakeFiles/HMM.dir/HMM_io.cpp.o: CMakeFiles/HMM.dir/flags.make
 CMakeFiles/HMM.dir/HMM_io.cpp.o: ../HMM_io.cpp
 CMakeFiles/HMM.dir/HMM_io.cpp.o: CMakeFiles/HMM.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/HMM.dir/HMM_io.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HMM.dir/HMM_io.cpp.o -MF CMakeFiles/HMM.dir/HMM_io.cpp.o.d -o CMakeFiles/HMM.dir/HMM_io.cpp.o -c /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/HMM_io.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/HMM.dir/HMM_io.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HMM.dir/HMM_io.cpp.o -MF CMakeFiles/HMM.dir/HMM_io.cpp.o.d -o CMakeFiles/HMM.dir/HMM_io.cpp.o -c /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/HMM_io.cpp
 
 CMakeFiles/HMM.dir/HMM_io.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HMM.dir/HMM_io.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/HMM_io.cpp > CMakeFiles/HMM.dir/HMM_io.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/HMM_io.cpp > CMakeFiles/HMM.dir/HMM_io.cpp.i
 
 CMakeFiles/HMM.dir/HMM_io.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HMM.dir/HMM_io.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/HMM_io.cpp -o CMakeFiles/HMM.dir/HMM_io.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/HMM_io.cpp -o CMakeFiles/HMM.dir/HMM_io.cpp.s
 
 CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.o: CMakeFiles/HMM.dir/flags.make
 CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.o: ../adjustableDurationHMM.cpp
 CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.o: CMakeFiles/HMM.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.o -MF CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.o.d -o CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.o -c /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/adjustableDurationHMM.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.o -MF CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.o.d -o CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.o -c /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/adjustableDurationHMM.cpp
 
 CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/adjustableDurationHMM.cpp > CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/adjustableDurationHMM.cpp > CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.i
 
 CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/adjustableDurationHMM.cpp -o CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/adjustableDurationHMM.cpp -o CMakeFiles/HMM.dir/adjustableDurationHMM.cpp.s
 
 CMakeFiles/HMM.dir/distribution.cpp.o: CMakeFiles/HMM.dir/flags.make
 CMakeFiles/HMM.dir/distribution.cpp.o: ../distribution.cpp
 CMakeFiles/HMM.dir/distribution.cpp.o: CMakeFiles/HMM.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/HMM.dir/distribution.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HMM.dir/distribution.cpp.o -MF CMakeFiles/HMM.dir/distribution.cpp.o.d -o CMakeFiles/HMM.dir/distribution.cpp.o -c /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/distribution.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/HMM.dir/distribution.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HMM.dir/distribution.cpp.o -MF CMakeFiles/HMM.dir/distribution.cpp.o.d -o CMakeFiles/HMM.dir/distribution.cpp.o -c /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/distribution.cpp
 
 CMakeFiles/HMM.dir/distribution.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HMM.dir/distribution.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/distribution.cpp > CMakeFiles/HMM.dir/distribution.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/distribution.cpp > CMakeFiles/HMM.dir/distribution.cpp.i
 
 CMakeFiles/HMM.dir/distribution.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HMM.dir/distribution.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/distribution.cpp -o CMakeFiles/HMM.dir/distribution.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/distribution.cpp -o CMakeFiles/HMM.dir/distribution.cpp.s
 
 CMakeFiles/HMM.dir/matrix_reader.cpp.o: CMakeFiles/HMM.dir/flags.make
 CMakeFiles/HMM.dir/matrix_reader.cpp.o: ../matrix_reader.cpp
 CMakeFiles/HMM.dir/matrix_reader.cpp.o: CMakeFiles/HMM.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/HMM.dir/matrix_reader.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HMM.dir/matrix_reader.cpp.o -MF CMakeFiles/HMM.dir/matrix_reader.cpp.o.d -o CMakeFiles/HMM.dir/matrix_reader.cpp.o -c /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/matrix_reader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/HMM.dir/matrix_reader.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HMM.dir/matrix_reader.cpp.o -MF CMakeFiles/HMM.dir/matrix_reader.cpp.o.d -o CMakeFiles/HMM.dir/matrix_reader.cpp.o -c /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/matrix_reader.cpp
 
 CMakeFiles/HMM.dir/matrix_reader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HMM.dir/matrix_reader.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/matrix_reader.cpp > CMakeFiles/HMM.dir/matrix_reader.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/matrix_reader.cpp > CMakeFiles/HMM.dir/matrix_reader.cpp.i
 
 CMakeFiles/HMM.dir/matrix_reader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HMM.dir/matrix_reader.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/matrix_reader.cpp -o CMakeFiles/HMM.dir/matrix_reader.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/matrix_reader.cpp -o CMakeFiles/HMM.dir/matrix_reader.cpp.s
 
 # Object files for target HMM
 HMM_OBJECTS = \
@@ -175,7 +175,7 @@ libHMM.so: /opt/root/lib/libCore.so.6.30.04
 libHMM.so: /usr/lib/gcc/x86_64-linux-gnu/11/libgomp.so
 libHMM.so: /usr/lib/x86_64-linux-gnu/libpthread.a
 libHMM.so: CMakeFiles/HMM.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX shared library libHMM.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX shared library libHMM.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/HMM.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -187,6 +187,6 @@ CMakeFiles/HMM.dir/clean:
 .PHONY : CMakeFiles/HMM.dir/clean
 
 CMakeFiles/HMM.dir/depend:
-	cd /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/CMakeFiles/HMM.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/CMakeFiles/HMM.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/HMM.dir/depend
 

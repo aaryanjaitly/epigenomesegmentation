@@ -1,4 +1,4 @@
-# Install script for directory: /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM
+# Install script for directory: /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

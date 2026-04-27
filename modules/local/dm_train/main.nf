@@ -6,8 +6,6 @@ process DM_TRAIN {
         'docker://aaryanjaitly/episegmix:new_plots' :
         'aaryanjaitly/episegmix:new_plots' }"
 
-    // 1. PATHs for local Mac scripts and built binary
-    // 2. PYTHONPATH so 'distribution.py' can be imported by siblings
     beforeScript """
         export PATH=\$PATH:${projectDir}/bin/src:${projectDir}/bin/HMM/build
         export PYTHONPATH=\$PYTHONPATH:/app/src:${projectDir}/bin/src

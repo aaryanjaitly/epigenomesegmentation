@@ -6,8 +6,10 @@ process DM_PREPARE {
         'docker://aaryanjaitly/episegmix:new_plots' :
         'aaryanjaitly/episegmix:new_plots' }"
     
-    // Minimal paths: Mac bin for Conda, and PYTHONPATH so imports work everywhere
-    beforeScript "export PATH=\$PATH:${projectDir}/bin/src; export PYTHONPATH=\$PYTHONPATH:/app/src:${projectDir}/bin/src"
+    beforeScript """
+        export PATH=\$PATH:${projectDir}/bin/src; 
+        export PYTHONPATH=\$PYTHONPATH:/app/src:${projectDir}/bin/src
+    """
     
     input:
     tuple val(meta), path(histone), path(meth), val(state)
@@ -24,52 +26,32 @@ process DM_PREPARE {
     def prefix    = "${meta.id}"
     def dist_hist = params.dist_histone.toString()
     def dist_meth = params.dist_methyl.toString()
+    
+    // Safely format the overrides map into a comma-separated string for the python script
     def dist_overrides = meta.distributions ? meta.distributions.collect { k, v -> "${k}:${v}" }.join(",") : ""
 
     """
     set -euo pipefail
     
-    # [Internal setup logic remains same for YAML creation]
-    HAS_METH=0
-    if [ -s "${meth}" ]; then HAS_METH=1; fi
+    # 1. Generate the YAML config via external script
+    create_dm_yaml.py \\
+        --prefix "${prefix}" \\
+        --histone "${histone}" \\
+        --meth "${meth}" \\
+        --state "${state}" \\
+        --chr_params "${chr_params}" \\
+        --dist_hist "${dist_hist}" \\
+        --dist_meth "${dist_meth}" \\
+        --overrides "${dist_overrides}"
 
-    HEADER=\$(head -n 1 "${histone}")
-    FILE_MARKS=(\$(echo "\$HEADER" | cut -f4-))
-    
-    MARKER_SPEC=""
-    for M in "\${FILE_MARKS[@]}"; do
-        DIST="${dist_hist}"
-        if [[ "${dist_overrides}" == *"\$M:"* ]]; then
-             DIST=\$(echo "${dist_overrides}" | grep -o "\$M:[^,]*" | cut -d: -f2)
-        fi
-        MARKER_SPEC="\${MARKER_SPEC}  - name: \${M}\n    distribution: \${DIST}\n"
-    done
-
-    cat <<EOF > "${prefix}.yaml"
-states: ${state}
-marker: \${#FILE_MARKS[@]}
-marker_spec:
-\${MARKER_SPEC}data: [\$(pwd)/${histone}]
-chr: ${chr_params}
-EOF
-
-    if [ "\$HAS_METH" -eq 1 ]; then
-        METH_DIST="${dist_meth}"
-        if [[ "${dist_overrides}" == *"WGBS:"* ]]; then
-             METH_DIST=\$(echo "${dist_overrides}" | grep -o "WGBS:[^,]*" | cut -d: -f2)
-        fi
-        cat <<EOF >> "${prefix}.yaml"
-dna_methylation: \${METH_DIST}
-meth_data: [\$(pwd)/${meth}]
-EOF
-    fi
-
+    # 2. Get Counts using the newly generated YAML
     get_counts.py \\
         -d "${prefix}.yaml" \\
         -c "${prefix}-train-counts.txt" \\
         -m "${prefix}-train-counts-meth.txt" \\
         -r "${prefix}-train-regions.txt"
 
+    # 3. Capture versions
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         python: \$(python --version | awk '{print \$2}')

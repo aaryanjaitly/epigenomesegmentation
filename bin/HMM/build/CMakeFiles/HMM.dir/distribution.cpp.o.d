@@ -1,5 +1,5 @@
 CMakeFiles/HMM.dir/distribution.cpp.o: \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/distribution.cpp \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/distribution.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/cmath \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -832,11 +832,11 @@ CMakeFiles/HMM.dir/distribution.cpp.o: \
  /usr/include/boost/math/special_functions/detail/ibeta_inverse.hpp \
  /usr/include/boost/math/special_functions/detail/t_distribution_inv.hpp \
  /usr/include/boost/math/special_functions/detail/ibeta_inv_ab.hpp \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/FCN.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/distribution.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/FCN.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/distribution.h \
  /usr/include/c++/11/numeric /usr/include/c++/11/bits/stl_numeric.h \
  /usr/include/c++/11/bit /usr/include/c++/11/pstl/glue_numeric_defs.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/matrix.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/matrix.h \
  /usr/include/c++/11/memory \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bits/shared_ptr.h \
@@ -850,5 +850,5 @@ CMakeFiles/HMM.dir/distribution.cpp.o: \
  /opt/root/include/Math/IFunctionfwd.h \
  /opt/root/include/Math/MinimizerOptions.h \
  /opt/root/include/Math/Factory.h /opt/root/include/Math/Functor.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/log_prob.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/sample_statistics.h
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/log_prob.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/sample_statistics.h

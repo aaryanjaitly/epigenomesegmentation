@@ -6,7 +6,10 @@ process DNA_DECODE {
         'docker://aaryanjaitly/episegmix:new_plots' :
         'aaryanjaitly/episegmix:new_plots' }"
 
-    beforeScript "export PATH=\$PATH:${projectDir}/bin/src:${projectDir}/bin/HMM/build; export PYTHONPATH=\$PYTHONPATH:/app/src:${projectDir}/bin/src"
+    beforeScript """
+        export PATH=\$PATH:${projectDir}/bin/src:${projectDir}/bin/HMM/build; 
+        export PYTHONPATH=\$PYTHONPATH:/app/src:${projectDir}/bin/src
+    """
 
     input:
     tuple val(meta), path(config), path(model), path(counts), path(regions)

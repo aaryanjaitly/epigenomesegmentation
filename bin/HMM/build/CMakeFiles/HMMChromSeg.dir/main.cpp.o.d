@@ -1,5 +1,5 @@
 CMakeFiles/HMMChromSeg.dir/main.cpp.o: \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/main.cpp \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/main.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -867,12 +867,12 @@ CMakeFiles/HMMChromSeg.dir/main.cpp.o: \
  /usr/include/boost/program_options/detail/convert.hpp \
  /usr/include/boost/program_options/variables_map.hpp \
  /usr/include/boost/program_options/version.hpp \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/HMM.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/matrix.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/distribution.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/HMM.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/matrix.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/distribution.h \
  /usr/include/c++/11/numeric /usr/include/c++/11/bits/stl_numeric.h \
  /usr/include/c++/11/pstl/glue_numeric_defs.h \
  /opt/root/include/Math/Minimizer.h /opt/root/include/Math/IFunction.h \
  /opt/root/include/Math/IFunctionfwd.h \
  /opt/root/include/Math/MinimizerOptions.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/matrix_reader.h
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/matrix_reader.h

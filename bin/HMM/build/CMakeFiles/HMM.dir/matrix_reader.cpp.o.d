@@ -1,5 +1,5 @@
 CMakeFiles/HMM.dir/matrix_reader.cpp.o: \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/matrix_reader.cpp \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/matrix_reader.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/vector \
  /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -601,7 +601,7 @@ CMakeFiles/HMM.dir/matrix_reader.cpp.o: \
  /usr/include/boost/algorithm/string/formatter.hpp \
  /usr/include/boost/algorithm/string/detail/formatter.hpp \
  /usr/include/boost/algorithm/string/erase.hpp \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/matrix_reader.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/matrix_reader.h \
  /usr/include/c++/11/iostream /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/matrix.h
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/matrix.h

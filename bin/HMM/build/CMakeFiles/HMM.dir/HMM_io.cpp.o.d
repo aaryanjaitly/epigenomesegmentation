@@ -1,5 +1,5 @@
 CMakeFiles/HMM.dir/HMM_io.cpp.o: \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/HMM_io.cpp \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/HMM_io.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/stdexcept \
  /usr/include/c++/11/exception \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -907,10 +907,10 @@ CMakeFiles/HMM.dir/HMM_io.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/HMM.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/matrix.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/HMM.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/matrix.h \
  /usr/include/c++/11/iostream \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/distribution.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/distribution.h \
  /usr/include/c++/11/numeric /usr/include/c++/11/bits/stl_numeric.h \
  /usr/include/c++/11/pstl/glue_numeric_defs.h \
  /opt/root/include/Math/Minimizer.h /opt/root/include/Math/IFunction.h \
@@ -937,6 +937,6 @@ CMakeFiles/HMM.dir/HMM_io.cpp.o: \
  /usr/include/c++/11/tr1/poly_hermite.tcc \
  /usr/include/c++/11/tr1/poly_laguerre.tcc \
  /usr/include/c++/11/tr1/riemann_zeta.tcc \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/adjustableDurationHMM.h \
- /home/aaryanjaitly/Desktop/nf-core-epigenomesegmentation/bin/HMM/log_prob.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/adjustableDurationHMM.h \
+ /Users/aaryanjaitly/Desktop/epigenomesegmentation/bin/HMM/log_prob.h \
  /usr/include/c++/11/math.h

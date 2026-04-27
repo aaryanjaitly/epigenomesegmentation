@@ -6,7 +6,6 @@ process STD_REPORT {
         'docker://aaryanjaitly/episegmix:new_plots' :
         'aaryanjaitly/episegmix:new_plots' }"
 
-    // Environmental setup for both Conda (local bin) and Docker (system PATH)
     beforeScript """
         export PATH=\$PATH:${projectDir}/bin/workflow:${projectDir}/bin/src
         export PYTHONPATH=\$PYTHONPATH:/app/src:${projectDir}/bin/src
