@@ -10,6 +10,19 @@
 
 ## Pipeline tools
 
+## Pipeline tools
+
+- [EpiSegMix] (https://doi.org/10.1093/bioinformatics/btae178)
+  > Schmitz JE, Aggarwal N, Laufer L, Walter J, Salhab A, Rahmann S. EpiSegMix: a flexible distribution hidden Markov model with duration modeling for chromatin state discovery. Bioinformatics. 2024 Mar 29;40(4):btae178. doi: 10.1093/bioinformatics/btae178. PMID: 38565260; PMCID: PMC11026141.
+
+- [BEDTools](https://pubmed.ncbi.nlm.nih.gov/20110278/)
+
+  > Quinlan AR, Hall IM. BEDTools: a flexible suite of utilities for comparing genomic features. Bioinformatics. 2010 Mar 15;26(6):841-2. doi: 10.1093/bioinformatics/btq033. Epub 2010 Jan 28. PubMed PMID: 20110278; PubMed Central PMCID: PMC2832824.
+
+- [SAMtools](https://pubmed.ncbi.nlm.nih.gov/19505943/)
+
+  > Li H, Handsaker B, Wysoker A, Fennell T, Ruan J, Homer N, Marth G, Abecasis G, Durbin R; 1000 Genome Project Data Processing Subgroup. The Sequence Alignment/Map format and SAMtools. Bioinformatics. 2009 Aug 15;25(16):2078-9. doi: 10.1093/bioinformatics/btp352. Epub 2009 Jun 8. PubMed PMID: 19505943; PubMed Central PMCID: PMC2723002.
+
 ## Software packaging/containerisation tools
 
 - [Anaconda](https://anaconda.com)
