@@ -1,0 +1,31 @@
+repository_type: pipeline
+
+nf_core_version: 3.5.2
+
+lint:
+  files_unchanged:
+    - .github/CONTRIBUTING.md
+    - assets/sendmail_template.txt
+  multiqc_config: false
+  files_exist:
+    - assets/multiqc_config.yml
+    - conf/igenomes.config
+    - conf/igenomes_ignored.config
+
+template:
+  org: nf-core
+  name: epigenomesegmentation
+  description: is a bioinformatics pipeline for chromatin segmentation. It uses a
+    hidden Markov model (HMM) to annotate genomic regions with functional states (e.g.,
+    enhancers, promoters) based on combinations of epigenetic modifications, capturing
+    spatial relations via transition probabilities.
+  author: Aaryan Jaitly
+  version: 1.0.0dev
+  force: true
+  outdir: .
+  skip_features:
+    - igenomes
+    - multiqc
+    - fastqc
+    - gpu
+  is_nfcore: true
