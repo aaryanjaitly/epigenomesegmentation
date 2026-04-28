@@ -113,16 +113,16 @@ For more details about the output files and reports, please refer to the
 
 ## Credits
 
-nf-core/epigenomesegmentation was originally written by Aaryan Jaitly.
-
 The original framework EpiSegMix that was used in ESM (https://doi.org/10.1093/bioinformatics/btae178) and ESMM (https://doi.org/10.1101/2025.07.25.666820) was written by Johanna Elena Schmitz and [Nihit Aggarwal](mailto:nihit.aggarwal@uni-saarland.de) (Saarland University).
 
-The EpiSegMix tool was developed and designed by:
-- [Nihit Aggarwal](mailto:nihit.aggarwal@uni-saarland.de)
-- Johanna Elena Schmitz
-- Dr. AbdulRahman Salhab
-- Prof. Dr. Jörn Walter
-- Prof. Dr. Sven Rahmann
+The pipeline was rewritten in Nextflow DSL2 by Aaryan Jaitly (Saarland University). 
+
+**EpiSegMix tool was devloped and designed by**:
+[Nihit Aggarwal](mailto:nihit.aggarwal@uni-saarland.de)
+Johanna Elena Schmitz
+Dr. AbdulRahman Salhab
+Prof. Dr. Jörn Walter
+Prof. Dr. Sven Rahmann
 
 ## Contributions and Support
 
