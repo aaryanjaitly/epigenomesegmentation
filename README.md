@@ -117,13 +117,12 @@ The original framework EpiSegMix that was used in ESM (https://doi.org/10.1093/b
 
 The pipeline was rewritten in Nextflow DSL2 by Aaryan Jaitly (Saarland University). 
 
-**EpiSegMix tool was devloped and designed by**:
-[Nihit Aggarwal](mailto:nihit.aggarwal@uni-saarland.de)
-Johanna Elena Schmitz
-Dr. AbdulRahman Salhab
-Prof. Dr. Jörn Walter
-Prof. Dr. Sven Rahmann
-
+**EpiSegMix tool was developed and designed by:**
+- [Nihit Aggarwal](mailto:nihit.aggarwal@uni-saarland.de)
+- Johanna Elena Schmitz
+- Dr. AbdulRahman Salhab
+- Prof. Dr. Jörn Walter
+- Prof. Dr. Sven Rahmann
 ## Contributions and Support
 
 If you would like to contribute to this pipeline, please see the [contributing guidelines](.github/CONTRIBUTING.md).
